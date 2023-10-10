@@ -32,6 +32,7 @@
 </script>
 <style lang="scss">
 .app-topnav {
+
   background-color: #333;
   border-bottom: 1px solid #e5e5e5;
   height: 45px;
