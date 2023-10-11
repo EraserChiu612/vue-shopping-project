@@ -23,3 +23,9 @@ export function findHotAPI() {
     url: '/home/hot'
   })
 }
+
+export function getGoodsAPI() {
+  return httpInstance({
+    url: '/home/goods'
+  })
+}

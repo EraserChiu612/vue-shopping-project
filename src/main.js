@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+import { lazyPlugin } from '@/directives/index.js'
 
-import { useIntersectionObserver } from '@vueuse/core'
 import App from './App.vue'
 import router from './router'
 
@@ -18,20 +18,6 @@ const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
+app.use(lazyPlugin)
 
 app.mount('#app')
-
-//定義全局(自訂)指令
-app.directive('img-lazy', {
-  mounted(el, binding) {
-    // el: 指令綁定的元素 img
-    //binding:binding.value 指令等於後面綁定的表達式的值
-    useIntersectionObserver(el, ([{ isIntersecting }]) => {
-      //isIntersecting:是否進入可視區域
-      if (isIntersecting) {
-        //進入可視區域
-        el.src = binding.value
-      }
-    })
-  }
-})
