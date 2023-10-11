@@ -34,49 +34,37 @@
 .app-topnav {
 
   background-color: #333;
-  border-bottom: 1px solid #e5e5e5;
-  height: 45px;
-  line-height: 45px;
-  font-size: 12px;
 
 
-  .container {
+
+  ul {
     display: flex;
+    height: 53px;
     justify-content: flex-end;
     align-items: center;
     list-style: none;
 
+    li {
+      a {
+        padding: 0 15px;
+        color: #cdcdcd;
+        line-height: 1;
+        display: inline-block;
 
-    ul {
-      padding: 0;
-      display: flex;
-      height: 53px;
-      justify-content: flex-end;
-      align-items: center;
-      list-style: none;
+        i {
+          font-size: 14px;
+          margin-right: 2px;
 
-      li {
-        a {
-          padding: 0 15px;
-          color: #cdcdcd;
-          line-height: 1;
-          display: inline-block;
-
-          i {
-            font-size: 14px;
-            margin-right: 2px;
-
-          }
-
-          &:hover {
-            color: $xtxColor;
-          }
         }
 
-        ~li {
-          a {
-            border-left: 2px solid #666;
-          }
+        &:hover {
+          color: $xtxColor;
+        }
+      }
+
+      ~li {
+        a {
+          border-left: 2px solid #666;
         }
       }
     }
