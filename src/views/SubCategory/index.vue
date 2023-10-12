@@ -54,11 +54,8 @@ const load = async () => {
   reqData.value.page++
   const res = await getSubCategoryAPI(reqData.value)
   goodList.value = [...goodList.value, ...res.result.items]
-
-
   //加載完畢,停止監聽
   if (res.result.items.length === 0) disabled.value = true
-
 }
 
 
