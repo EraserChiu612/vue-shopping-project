@@ -1,38 +1,15 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { getCategoryAPI } from '@/apis/category.js'
-import { getBannerAPI } from '@/apis/home'
-import { useRoute } from 'vue-router'
-
-const categoryData = ref({})
-const route = useRoute()
+import { useBanner } from './composables/useBanner.js'
+import { useCategory } from './composables/useCategory.js'
+import GoodsItem from '../Home/components/GoodsItem.vue'
 
 
 
-const getCategory = async () => {
-  const res = await getCategoryAPI(route.params.id)
-  categoryData.value = res.result
-}
+//獲取輪播圖數據
+const { bannerList } = useBanner()
 
-onMounted(() => {
-  getCategory()
-})
-
-//獲取輪播圖
-
-const bannerList = ref([])
-
-const getBanner = async () => {
-  const res = await getBannerAPI({
-    distributionSite: '2'
-  })
-  console.log(res)
-  bannerList.value = res.result
-}
-
-onMounted(() => {
-  getBanner()
-})
+//獲取分類數據
+const { categoryData } = useCategory()
 
 
 </script>
@@ -53,6 +30,25 @@ onMounted(() => {
             <img :src="item.imgUrl" alt="">
           </el-carousel-item>
         </el-carousel>
+      </div>
+      <div class="sub-list">
+        <h3>全部分類</h3>
+        <ul>
+          <li v-for="i in categoryData.children" :key="i.id">
+            <RouterLink :to="`/category/sub/${i.id}`">
+              <img :src="i.picture" />
+              <p>{{ i.name }}</p>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
+      <div class="ref-goods" v-for="item in categoryData.children" :key="item.id">
+        <div class="head">
+          <h3>- {{ item.name }}-</h3>
+        </div>
+        <div class="body">
+          <GoodsItem v-for="good in item.goods" :goods="good" :key="good.id" />
+        </div>
       </div>
     </div>
   </div>
@@ -141,7 +137,8 @@ onMounted(() => {
 .home-banner {
   width: 1240px;
   height: 500px;
-  margin: 50px auto;
+  margin: 0 auto;
+  position: relative;
 
 
   img {

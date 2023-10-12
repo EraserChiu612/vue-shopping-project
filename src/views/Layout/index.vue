@@ -24,6 +24,8 @@ onMounted(() => {
   <LayoutNav />
   <LayoutHeader />
   <!-- 次級路由出口 -->
+  <!-- 添加key,破壞vue的複用機制,強制銷毀重建 -->
+  <!-- <RouterView :key="$route.fullPath" /> -->
   <RouterView />
   <LayoutFooter />
 </template>
