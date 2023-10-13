@@ -63,8 +63,8 @@ const CategoryStore = useCategoryStore()
   .logo {
     width: 200px;
     height: 80px;
-    background: url("@/assets/images/logo.png") no-repeat right 2px;
-    background-size: 160px auto;
+    background: url("@/assets/images/logo.jpg") no-repeat top center;
+    background-size: 160px 100px;
   }
 
   .right {
