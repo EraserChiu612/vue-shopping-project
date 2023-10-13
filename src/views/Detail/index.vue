@@ -3,6 +3,7 @@ import DetailHot from './components/DetailHot.vue'
 import { getDetail } from '@/apis/detail.js'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
+import ImageView from '@/components/ImageView/index.vue'
 
 const goods = ref({})
 const route = useRoute()
@@ -42,7 +43,7 @@ onMounted(() => {
           <div class="goods-info">
             <div class="media">
               <!-- 图片預覽區 -->
-
+              <ImageView />
               <!-- 統計數量 -->
               <ul class="goods-sales">
                 <li>
@@ -127,9 +128,9 @@ onMounted(() => {
             <!-- 24hr熱榜+專區推薦 -->
             <div class="goods-aside">
               <!-- 24小時熱榜 -->
-              <DetailHot />
+              <DetailHot :hot-type="1" />
               <!-- 周日榜單 -->
-              <DetailHot />
+              <DetailHot :hot-type="2" />
             </div>
           </div>
         </div>
