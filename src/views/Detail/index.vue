@@ -3,7 +3,12 @@ import DetailHot from './components/DetailHot.vue'
 import { getDetail } from '@/apis/detail.js'
 import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
-import ImageView from '@/components/ImageView/index.vue'
+
+
+const Skuchange = (sku) => {
+  console.log(sku)
+}
+
 
 const goods = ref({})
 const route = useRoute()
@@ -43,7 +48,7 @@ onMounted(() => {
           <div class="goods-info">
             <div class="media">
               <!-- 图片預覽區 -->
-              <ImageView />
+              <XtxImageView :image-list="goods.mainPictures" />
               <!-- 統計數量 -->
               <ul class="goods-sales">
                 <li>
@@ -91,7 +96,9 @@ onMounted(() => {
                   </dd>
                 </dl>
               </div>
-              <!-- sku组件 -->
+              <!-- sku(最小可用單位)组件 -->
+              <XtxSku :goods="goods" @change="Skuchange" />
+
 
               <!-- 数据组件 -->
 

@@ -2,7 +2,8 @@
   <nav class="app-topnav">
     <div class="container">
       <ul>
-        <template v-if="true">
+        <!-- 多模板渲染 區分登入與非登入狀態-->
+        <template v-if="false">
           <li><a href="#"><i class="iconfont icon-user"></i>周杰倫</a></li>
           <li>
             <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
@@ -15,7 +16,7 @@
           <li><a href="#">會員中心</a></li>
         </template>
         <template v-else>
-          <li><a href="#">請先登錄</a></li>
+          <li><a href="#" @click="$router.push('/login')">請先登入</a></li>
           <li><a href="#">幫助中心</a></li>
           <li><a href="#">關於我們</a></li>
         </template>

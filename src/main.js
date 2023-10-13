@@ -1,6 +1,9 @@
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
+//引入懶加載插件
 import { lazyPlugin } from '@/directives/index.js'
+//引入全局組件插件
+import { componentPlugin } from '@/components/index.js'
 
 import App from './App.vue'
 import router from './router'
@@ -19,5 +22,6 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(lazyPlugin)
+app.use(componentPlugin)
 
 app.mount('#app')
