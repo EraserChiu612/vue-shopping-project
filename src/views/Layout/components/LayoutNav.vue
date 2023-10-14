@@ -1,14 +1,37 @@
+<script setup>
+
+import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+
+const userStore = useUserStore()
+const router = useRouter()
+
+
+
+const confirm = () => {
+  //登出的邏輯實現
+  //1.清除登入訊息,觸發action
+  userStore.clearUserInfo()
+  //2.跳轉到登入頁面
+  router.push('/login')
+}
+
+
+
+
+</script>
 <template  >
   <nav class="app-topnav">
     <div class="container">
       <ul>
         <!-- 多模板渲染 區分登入與非登入狀態-->
-        <template v-if="false">
-          <li><a href="#"><i class="iconfont icon-user"></i>周杰倫</a></li>
+        <!-- 設計思路: 登入時顯示第一個模板, 非登入時顯示第二個模板 (是否有token) -->
+        <template v-if="userStore.userInfo.token">
+          <li><a href="#"><i class="iconfont icon-user"></i>{{userStore.userInfo.account}}</a></li>
           <li>
-            <el-popconfirm title="確認退出嗎?" confirm-button-text="確認" cancel-button-text="取消">
+            <el-popconfirm @confirm="confirm" title="確認登出嗎?" confirm-button-text="確認" cancel-button-text="取消">
               <template #reference>
-                <a href="#">退出登錄</a>
+                <a href="#">立即登出</a>
               </template>
             </el-popconfirm>
           </li>
@@ -24,13 +47,7 @@
     </div>
   </nav>
 </template>
-<script setup>
 
-
-
-
-
-</script>
 <style lang="scss">
 .app-topnav {
 

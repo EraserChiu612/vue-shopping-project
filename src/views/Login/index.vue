@@ -1,17 +1,18 @@
 <script setup>
 import { ref } from 'vue'
-import { loginAPI } from '@/apis/user'
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 import { useRouter }  from 'vue-router' 
+import { useUserStore } from '@/stores/user'
 
+const userStore = useUserStore()
 
 
 
 //1.Form內容驗證 (帳戶+密碼)
 const form = ref({
-  account: '',
-  password: '',
+  account: 'xiaotuxian001',
+  password: '123456',
   agree: true
 })
 
@@ -52,8 +53,8 @@ const doLogin = () => {
         // "password": "123456"
     if (valid) {
       //驗證通過
-      const res = await loginAPI({ account, password })
-      console.log(res)
+      await userStore.getUserInfo({ account, password })
+      //提示登入成功
       ElMessage({type:'success',message:'登入成功'})
       //跳轉首頁
       router.replace('/')
