@@ -6,18 +6,14 @@ import LayoutFooter from './components/LayoutFooter.vue'
 import LayoutFixed from './components/LayoutFixed.vue'
 
 //獲取導航列表的action
-import { useCategoryStore } from '@/stores/category.js'
+import { useCategoryStore } from '@/stores/categoryStore'
 
 const CategoryStore = useCategoryStore()
 
 onMounted(() => {
   CategoryStore.getCategory()
 })
-
-</script> 
-
-
-
+</script>
 
 <template>
   <LayoutFixed />

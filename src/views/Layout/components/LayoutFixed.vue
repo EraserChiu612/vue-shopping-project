@@ -1,20 +1,15 @@
-
 <script setup>
 import { useScroll } from '@vueuse/core'
-import { useCategoryStore } from '@/stores/category.js'
+import { useCategoryStore } from '@/stores/categoryStore'
 
 const { y } = useScroll(window)
 
 //使用pinia裡的數據
 
 const CategoryStore = useCategoryStore()
-
-
-
-
 </script>
 <template>
-  <div class="app-header-sticky " :class="{ show: y > 78 }">
+  <div class="app-header-sticky" :class="{ show: y > 78 }">
     <div class="container">
       <RouterLink class="logo" to="/" />
       <!-- 導覽區域 -->
@@ -23,7 +18,9 @@ const CategoryStore = useCategoryStore()
           <RouterLink to="/">首頁</RouterLink>
         </li>
         <li class="home" v-for="item in CategoryStore.categoryList" :key="item.id">
-          <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+          <RouterLink active-class="active" :to="`/category/${item.id}`">{{
+            item.name
+          }}</RouterLink>
         </li>
       </ul>
       <div class="right">
@@ -54,7 +51,6 @@ const CategoryStore = useCategoryStore()
     transition: all 0.3s linear;
   }
 
-
   .container {
     display: flex;
     align-items: center;
@@ -63,7 +59,7 @@ const CategoryStore = useCategoryStore()
   .logo {
     width: 200px;
     height: 80px;
-    background: url("@/assets/images/logo.jpg") no-repeat top center;
+    background: url('@/assets/images/logo.jpg') no-repeat top center;
     background-size: 160px 100px;
   }
 

@@ -1,22 +1,11 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category';
+import { useCategoryStore } from '@/stores/categoryStore'
 
-const categoryStore = useCategoryStore();
-
-
-
-
-
+const categoryStore = useCategoryStore()
 </script>
 
-
-
-
-
-
-
 <template>
-  <div class='home-category'>
+  <div class="home-category">
     <ul class="menu">
       <li v-for="item in categoryStore.categoryList" :key="item.id">
         <RouterLink to="/">{{ item.name }}</RouterLink>
@@ -27,7 +16,7 @@ const categoryStore = useCategoryStore();
           <ul>
             <li v-for="i in item.goods" :key="i.id">
               <RouterLink to="/">
-                <img :src="i.picture" alt="">
+                <img :src="i.picture" alt="" />
                 <div class="info">
                   <p class="name ellipsis-2">{{ i.name }}</p>
                   <p class="desc ellipsis">{{ i.desc }}</p>

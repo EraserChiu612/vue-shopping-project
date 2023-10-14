@@ -7,7 +7,6 @@ import { useRoute } from 'vue-router'
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
 
-
 const cartStore = useCartStore()
 
 // sku規格被操作過
@@ -16,7 +15,6 @@ const Skuchange = (sku) => {
   console.log(sku)
   skuObj = sku
 }
-
 
 const goods = ref({})
 const route = useRoute()
@@ -50,7 +48,7 @@ const addCart = () => {
       attrsText: skuObj.attrs,
       selected: true
     })
-  }else{
+  } else {
     //規格未選擇
     ElMessage.warning('請選擇規格')
   }
@@ -66,12 +64,13 @@ const addCart = () => {
           <!-- 報錯原因：goods一開始為{ },categories is undefined 
         1.可選鏈語法?.
         2.v-if手動控制渲染時機,保證只有數據存在才渲染 (v)-->
-          <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }">{{ goods.categories[1].name }}
+          <el-breadcrumb-item :to="{ path: `/category/${goods.categories[1].id}` }"
+            >{{ goods.categories[1].name }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }">{{ goods.categories[0].name
-          }}
+          <el-breadcrumb-item :to="{ path: `/category/sub/${goods.categories[0].id}` }"
+            >{{ goods.categories[0].name }}
           </el-breadcrumb-item>
-          <el-breadcrumb-item>抓绒保暖，毛毛虫子儿童运动鞋</el-breadcrumb-item>
+          <el-breadcrumb-item>{{ goods.name }}</el-breadcrumb-item>
         </el-breadcrumb>
       </div>
       <!-- 商品訊息 -->
@@ -107,40 +106,36 @@ const addCart = () => {
             </div>
             <div class="spec">
               <!-- 商品訊息區 -->
-              <p class="g-name"> {{ goods.name }} </p>
+              <p class="g-name">{{ goods.name }}</p>
               <p class="g-desc">{{ goods.desc }}</p>
               <p class="g-price">
-                <span>{{ goods.oldPrice }}</span>
                 <span>{{ goods.price }}</span>
+                <span>{{ goods.oldPrice }}</span>
               </p>
               <div class="g-service">
                 <dl>
-                  <dt>促销</dt>
-                  <dd>12月好物放送，App领券购买直降120元</dd>
+                  <dt>促銷</dt>
+                  <dd>10月周年慶大放送，App領券購買直降100元</dd>
                 </dl>
                 <dl>
-                  <dt>服务</dt>
+                  <dt>服務</dt>
                   <dd>
-                    <span>無憂退貨</span>
-                    <span>快速付款</span>
-                    <span>免費包郵</span>
-                    <a href="javascript:;">了解详情</a>
+                    <span>無條件退款</span>
+                    <span>支持多元支付</span>
+                    <span>免運費</span>
+                    <a href="#">了解詳情</a>
                   </dd>
                 </dl>
               </div>
-              <!-- sku(最小可用單位)组件 -->
+              <!-- sku(最小可用單位)組件 -->
               <XtxSku :goods="goods" @change="Skuchange" />
 
-
-              <!-- 数据组件 -->
-              <el-input-number v-model="count"  @change="countChange" />
-              <!-- 按钮组件 -->
+              <!-- 數量组件 -->
+              <el-input-number v-model="count" @change="countChange" />
+              <!-- 購物車按鈕組件 -->
               <div>
-                <el-button size="large" class="btn" @click="addCart">
-                  加入購物車
-                </el-button>
+                <el-button size="large" class="btn" @click="addCart"> 加入購物車 </el-button>
               </div>
-
             </div>
           </div>
           <div class="goods-footer">
@@ -159,8 +154,7 @@ const addCart = () => {
                     </li>
                   </ul>
                   <!-- 图片 -->
-                  <img v-for="img in goods.details.pictures" :key="img" v-img-lazy="img" alt="">
-
+                  <img v-for="img in goods.details.pictures" :key="img" v-img-lazy="img" alt="" />
                 </div>
               </div>
             </div>
@@ -178,8 +172,7 @@ const addCart = () => {
   </div>
 </template>
 
-
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .xtx-goods-page {
   .goods-info {
     min-height: 600px;
@@ -249,7 +242,7 @@ const addCart = () => {
 
     span {
       &::before {
-        content: "¥";
+        content: '¥';
         font-size: 14px;
       }
 
@@ -291,7 +284,7 @@ const addCart = () => {
             margin-right: 10px;
 
             &::before {
-              content: "•";
+              content: '•';
               color: $xtxColor;
               margin-right: 2px;
             }
@@ -316,13 +309,13 @@ const addCart = () => {
       flex: 1;
       position: relative;
 
-      ~li::after {
+      ~ li::after {
         position: absolute;
         top: 10px;
         left: 0;
         height: 60px;
         border-left: 1px solid #e4e4e4;
-        content: "";
+        content: '';
       }
 
       p {
@@ -370,7 +363,7 @@ const addCart = () => {
       font-size: 18px;
       position: relative;
 
-      >span {
+      > span {
         color: $priceColor;
         font-size: 16px;
         margin-left: 10px;
@@ -404,14 +397,13 @@ const addCart = () => {
     }
   }
 
-  >img {
+  > img {
     width: 100%;
   }
 }
 
 .btn {
   margin-top: 20px;
-
 }
 
 .bread-container {

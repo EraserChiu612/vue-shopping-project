@@ -1,7 +1,6 @@
 <script setup>
 import { useCartStore } from '@/stores/cartStore'
 const cartStore = useCartStore()
-
 </script>
 
 <template>
@@ -30,13 +29,13 @@ const cartStore = useCartStore()
       </div>
       <div class="foot">
         <div class="total">
-          <p>共{{cartStore.allCount}}件商品</p>
-          <p>&yen;{{cartStore.allPrice}}</p>
+          <p>共{{ cartStore.allCount }}件商品</p>
+          <p>&yen;{{ cartStore.allPrice.toFixed(2) }}</p>
         </div>
         <el-button size="large" type="primary" @click="$router.push('/cartlist')">結帳去</el-button>
       </div>
     </div>
-</div>
+  </div>
 </template>
 
 <style scoped lang="scss">
@@ -93,7 +92,7 @@ const cartStore = useCartStore()
     padding-top: 10px;
 
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       right: 14px;
       top: -10px;

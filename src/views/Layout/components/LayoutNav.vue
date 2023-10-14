@@ -1,12 +1,9 @@
 <script setup>
-
-import { useUserStore } from '@/stores/user'
+import { useUserStore } from '@/stores/userStore'
 import { useRouter } from 'vue-router'
 
 const userStore = useUserStore()
 const router = useRouter()
-
-
 
 const confirm = () => {
   //登出的邏輯實現
@@ -15,21 +12,24 @@ const confirm = () => {
   //2.跳轉到登入頁面
   router.push('/login')
 }
-
-
-
-
 </script>
-<template  >
+<template>
   <nav class="app-topnav">
     <div class="container">
       <ul>
         <!-- 多模板渲染 區分登入與非登入狀態-->
         <!-- 設計思路: 登入時顯示第一個模板, 非登入時顯示第二個模板 (是否有token) -->
         <template v-if="userStore.userInfo.token">
-          <li><a href="#"><i class="iconfont icon-user"></i>{{userStore.userInfo.account}}</a></li>
           <li>
-            <el-popconfirm @confirm="confirm" title="確認登出嗎?" confirm-button-text="確認" cancel-button-text="取消">
+            <a href="#"><i class="iconfont icon-user"></i>{{ userStore.userInfo.account }}</a>
+          </li>
+          <li>
+            <el-popconfirm
+              @confirm="confirm"
+              title="確認登出嗎?"
+              confirm-button-text="確認"
+              cancel-button-text="取消"
+            >
               <template #reference>
                 <a href="#">立即登出</a>
               </template>
@@ -50,10 +50,7 @@ const confirm = () => {
 
 <style lang="scss">
 .app-topnav {
-
   background-color: #333;
-
-
 
   ul {
     display: flex;
@@ -72,7 +69,6 @@ const confirm = () => {
         i {
           font-size: 14px;
           margin-right: 2px;
-
         }
 
         &:hover {
@@ -80,7 +76,7 @@ const confirm = () => {
         }
       }
 
-      ~li {
+      ~ li {
         a {
           border-left: 2px solid #666;
         }

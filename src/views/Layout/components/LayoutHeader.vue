@@ -1,19 +1,13 @@
 <script setup>
-import { useCategoryStore } from '@/stores/category.js'
-import HeaderCart from './headerCart.vue'
-
+import { useCategoryStore } from '@/stores/categoryStore'
+import HeaderCart from './HeaderCart.vue'
 
 //使用pinia裡的數據
 
 const CategoryStore = useCategoryStore()
-
 </script>
 
-
-
-
-
-<template >
+<template>
   <header class="app-header">
     <div class="container">
       <h1 class="logo">
@@ -24,21 +18,20 @@ const CategoryStore = useCategoryStore()
           <RouterLink to="/">首頁</RouterLink>
         </li>
         <li class="home" v-for="item in CategoryStore.categoryList" :key="item.id">
-          <RouterLink active-class="active" :to="`/category/${item.id}`">{{ item.name }}</RouterLink>
+          <RouterLink active-class="active" :to="`/category/${item.id}`">{{
+            item.name
+          }}</RouterLink>
         </li>
-
-
       </ul>
       <div class="search">
         <i class="iconfont icon-search"></i>
-        <input type="text" placeholder="搜一搜">
+        <input type="text" placeholder="搜一搜" />
       </div>
       <!--- 購物車 -->
       <HeaderCart />
     </div>
   </header>
 </template>
-
 
 <style lang="scss">
 .app-header {

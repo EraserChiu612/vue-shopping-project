@@ -2,12 +2,10 @@
 import { ref } from 'vue'
 import 'element-plus/theme-chalk/el-message.css'
 import { ElMessage } from 'element-plus'
-import { useRouter }  from 'vue-router' 
-import { useUserStore } from '@/stores/user'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/userStore'
 
 const userStore = useUserStore()
-
-
 
 //1.Form內容驗證 (帳戶+密碼)
 const form = ref({
@@ -18,9 +16,7 @@ const form = ref({
 
 //2.建立規則物件
 const rules = {
-  account: [
-    { required: true, message: '請輸入帳戶名', trigger: 'blur' },
-  ],
+  account: [{ required: true, message: '請輸入帳戶名', trigger: 'blur' }],
   password: [
     { required: true, message: '請輸入密碼', trigger: 'blur' },
     { min: 6, max: 14, message: '密碼長度為 6-14 個字符', trigger: 'blur' }
@@ -49,23 +45,21 @@ const doLogin = () => {
   const { account, password } = form.value
   formRef.value.validate(async (valid) => {
     // valid: 是所有項目都通過驗證,才會是true
-       // "account": "xiaotuxian001",
-        // "password": "123456"
+    // "account": "xiaotuxian001",
+    // "password": "123456"
     if (valid) {
       //驗證通過
       await userStore.getUserInfo({ account, password })
       //提示登入成功
-      ElMessage({type:'success',message:'登入成功'})
+      ElMessage({ type: 'success', message: '登入成功' })
       //跳轉首頁
       router.replace('/')
-    } 
+    }
   })
 }
 
 //
-
 </script>
-
 
 <template>
   <div>
@@ -88,7 +82,14 @@ const doLogin = () => {
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+            <el-form
+              ref="formRef"
+              :model="form"
+              :rules="rules"
+              label-position="right"
+              label-width="60px"
+              status-icon
+            >
               <el-form-item prop="account" label="帳戶">
                 <el-input v-model="form.account" />
               </el-form-item>
@@ -124,7 +125,7 @@ const doLogin = () => {
   </div>
 </template>
 
-<style scoped lang='scss'>
+<style scoped lang="scss">
 .login-header {
   background: #fff;
   border-bottom: 1px solid #e4e4e4;
@@ -143,7 +144,7 @@ const doLogin = () => {
       height: 132px;
       width: 100%;
       text-indent: -9999px;
-      background: url("@/assets/images/logo.jpg") no-repeat center 18px / contain;
+      background: url('@/assets/images/logo.jpg') no-repeat center 18px / contain;
     }
   }
 
@@ -220,7 +221,7 @@ const doLogin = () => {
       color: #999;
       display: inline-block;
 
-      ~a {
+      ~ a {
         border-left: 1px solid #ccc;
       }
     }
@@ -251,7 +252,7 @@ const doLogin = () => {
         position: relative;
         height: 36px;
 
-        >i {
+        > i {
           width: 34px;
           height: 34px;
           background: #cfcdcd;
@@ -296,7 +297,7 @@ const doLogin = () => {
         }
       }
 
-      >.error {
+      > .error {
         position: absolute;
         font-size: 12px;
         line-height: 28px;
