@@ -1,4 +1,67 @@
 <script setup>
+import { ref } from 'vue'
+import { loginAPI } from '@/apis/user'
+import 'element-plus/theme-chalk/el-message.css'
+import { ElMessage } from 'element-plus'
+import { useRouter }  from 'vue-router' 
+
+
+
+
+//1.Form內容驗證 (帳戶+密碼)
+const form = ref({
+  account: '',
+  password: '',
+  agree: true
+})
+
+//2.建立規則物件
+const rules = {
+  account: [
+    { required: true, message: '請輸入帳戶名', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '請輸入密碼', trigger: 'blur' },
+    { min: 6, max: 14, message: '密碼長度為 6-14 個字符', trigger: 'blur' }
+  ],
+  agree: [
+    {
+      validator: (rule, value, callback) => {
+        //自定義邏輯
+        //同意就通過
+        if (value) {
+          callback()
+        } else {
+          callback(new Error('請勾選同意'))
+        }
+      },
+      trigger: 'change'
+    }
+  ]
+}
+
+// 3.獲取form進行全部驗證
+const formRef = ref(null)
+const router = useRouter()
+
+const doLogin = () => {
+  const { account, password } = form.value
+  formRef.value.validate(async (valid) => {
+    // valid: 是所有項目都通過驗證,才會是true
+       // "account": "xiaotuxian001",
+        // "password": "123456"
+    if (valid) {
+      //驗證通過
+      const res = await loginAPI({ account, password })
+      console.log(res)
+      ElMessage({type:'success',message:'登入成功'})
+      //跳轉首頁
+      router.replace('/')
+    } 
+  })
+}
+
+//
 
 </script>
 
@@ -24,19 +87,19 @@
         </nav>
         <div class="account-box">
           <div class="form">
-            <el-form label-position="right" label-width="60px" status-icon>
-              <el-form-item label="帳戶">
-                <el-input />
+            <el-form ref="formRef" :model="form" :rules="rules" label-position="right" label-width="60px" status-icon>
+              <el-form-item prop="account" label="帳戶">
+                <el-input v-model="form.account" />
               </el-form-item>
-              <el-form-item label="密碼">
-                <el-input />
+              <el-form-item prop="password" label="密碼">
+                <el-input v-model="form.password" />
               </el-form-item>
-              <el-form-item label-width="22px">
-                <el-checkbox size="large">
+              <el-form-item prop="agree" label-width="22px">
+                <el-checkbox size="large" v-model="form.agree">
                   我已同意服務條款與隱私政策
                 </el-checkbox>
               </el-form-item>
-              <el-button size="large" class="subBtn">點擊登入</el-button>
+              <el-button size="large" class="subBtn" @click="doLogin">點擊登入</el-button>
             </el-form>
           </div>
         </div>
