@@ -99,6 +99,7 @@ export const useCartStore = defineStore(
       clearCart,
       singleCheck,
       allCheck,
+      updateNewList,
       allCount,
       allPrice,
       selectedCount,
