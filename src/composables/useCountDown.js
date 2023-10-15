@@ -6,7 +6,7 @@ export const useCountDown = () => {
   //1.響應式數據
   let timer = null
   const time = ref(0)
-  //格式化時間 xx分xx秒
+  //格式化時間 xx分xx秒 -dayjs
   const formatTime = computed(() => dayjs.unix(time.value).format('mm分ss秒'))
 
   //2.開啟倒計時函數
