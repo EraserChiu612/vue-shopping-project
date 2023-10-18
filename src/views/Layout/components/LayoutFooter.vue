@@ -5,26 +5,26 @@
       <div class="container">
         <dl>
           <dt>客戶服務</dt>
-          <dd><i class="iconfont icon-kefu"></i>在線客服</dd>
-          <dd><i class="iconfont icon-question"></i>問題反饋</dd>
+          <dd><i class="bx bx-headphone"></i>數位客服</dd>
+          <dd><i class="bx bxs-help-circle"></i>常見問題</dd>
         </dl>
         <dl>
           <dt>關注我們</dt>
-          <dd><i class="iconfont icon-weixin"></i>公眾號</dd>
-          <dd><i class="iconfont icon-weibo"></i>微博</dd>
+          <dd><i class="bx bxl-facebook-square"></i>FaceBook</dd>
+          <dd><i class="bx bxl-twitter"></i>Twitter</dd>
         </dl>
         <dl>
           <dt>下載APP</dt>
-          <dd class="qrcode"><img src="#"></dd>
+          <dd class="qrcode"><img src="../../../assets/images/qrcode.png" /></dd>
           <dd class="download">
             <span>掃描二維碼</span>
-            <span>立碼下載APP</span>
+            <span>作者github</span>
             <a href="#">下載頁面</a>
           </dd>
         </dl>
         <dl>
           <dt>服務熱線</dt>
-          <dd class="hotline">400-0000-000 <small>周一到周日: 8:00-18:00</small></dd>
+          <dd class="hotline">0800-123-123 <small>周一到周日: 8:00-18:00</small></dd>
         </dl>
       </div>
     </div>
@@ -33,16 +33,16 @@
       <div class="container">
         <div class="slogan">
           <a href="#">
-            <i class="iconfont icon-footer01"></i>
-            <span>價格親民</span>
+            <i class="bx bxs-purchase-tag"></i>
+            <span>低價保證</span>
           </a>
           <a href="#">
-            <i class="iconfont icon-footer02"></i>
-            <span>物流快捷</span>
+            <i class="bx bxs-package"></i>
+            <span>快速到貨</span>
           </a>
           <a href="#">
-            <i class="iconfont icon-footer03"></i>
-            <span>品質新鮮</span>
+            <i class="bx bx-shield-quarter"></i>
+            <span>交易安全</span>
           </a>
         </div>
         <!--- 版權信息 -->
@@ -56,17 +56,14 @@
             <a href="#">搜尋推廣</a>
             <a href="#">友情連結</a>
           </p>
-          <p>© 2023 小猴子商城</p>
+          <p>© 2023 小猴子商城 (內容版權皆屬原機構、單位所有 僅作學習使用)</p>
         </div>
       </div>
     </div>
   </footer>
 </template>
 
-
-<script>
-</script>
-
+<script></script>
 
 <style lang="scss">
 .app_footer {
@@ -112,8 +109,8 @@
       padding-top: 10px;
       border: 1px solid #ededed;
 
-      .iconfont {
-        font-size: 36px;
+      .bx {
+        font-size: 45px;
         display: block;
         color: #666;
       }

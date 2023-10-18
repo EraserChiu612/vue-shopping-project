@@ -21,7 +21,7 @@ const confirm = () => {
         <!-- 設計思路: 登入時顯示第一個模板, 非登入時顯示第二個模板 (是否有token) -->
         <template v-if="userStore.userInfo.token">
           <li>
-            <a href="#"><i class="iconfont icon-user"></i>{{ userStore.userInfo.account }}</a>
+            <a href="#"><i class="bx bxs-user"></i>{{ userStore.userInfo.account }}</a>
           </li>
           <li>
             <el-popconfirm
@@ -67,8 +67,8 @@ const confirm = () => {
         display: inline-block;
 
         i {
-          font-size: 14px;
-          margin-right: 2px;
+          font-size: 18px;
+          margin-right: 4px;
         }
 
         &:hover {

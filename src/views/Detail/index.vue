@@ -85,22 +85,22 @@ const addCart = () => {
                 <li>
                   <p>銷量人氣</p>
                   <p>{{ goods.salesCount }}+</p>
-                  <p><i class="iconfont icon-task-filling"></i>銷量人氣</p>
+                  <p><i class="bx bxs-hot"></i>銷量人氣</p>
                 </li>
                 <li>
                   <p>商品評價</p>
                   <p>{{ goods.commentCount }}+</p>
-                  <p><i class="iconfont icon-comment-filling"></i>查看評價</p>
+                  <p><i class="bx bx-comment-dots"></i>查看評價</p>
                 </li>
                 <li>
                   <p>收藏人氣</p>
                   <p>{{ goods.collectCount }}+</p>
-                  <p><i class="iconfont icon-favorite-filling"></i>收藏商品</p>
+                  <p><i class="bx bxs-bookmark-heart"></i>收藏商品</p>
                 </li>
                 <li>
                   <p>品牌訊息</p>
                   <p>{{ goods.brand.name }}</p>
-                  <p><i class="iconfont icon-dynamic-filling"></i>品牌訊息</p>
+                  <p><i class="bx bxs-id-card"></i>品牌訊息</p>
                 </li>
               </ul>
             </div>
@@ -334,8 +334,9 @@ const addCart = () => {
 
           i {
             color: $xtxColor;
-            font-size: 14px;
+            font-size: 18px;
             margin-right: 2px;
+            vertical-align: middle;
           }
 
           &:hover {

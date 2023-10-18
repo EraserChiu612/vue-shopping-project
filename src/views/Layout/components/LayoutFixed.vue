@@ -30,6 +30,7 @@ const CategoryStore = useCategoryStore()
     </div>
   </div>
 </template>
+
 <style lang="scss">
 .app-header-sticky {
   width: 100%;

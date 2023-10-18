@@ -70,8 +70,7 @@ const doLogin = () => {
         </h1>
         <RouterLink class="entry" to="/">
           進入網站首頁
-          <i class="iconfont icon-angle-right"></i>
-          <i class="iconfont icon-angle-right"></i>
+          <i class="bx bx-chevrons-right"></i>
         </RouterLink>
       </div>
     </header>
@@ -113,11 +112,11 @@ const doLogin = () => {
         <p>
           <a href="javascript:;">關於我们</a>
           <a href="javascript:;">幫助中心</a>
-          <a href="javascript:;">售後服务</a>
-          <a href="javascript:;">配送與運費</a>
-          <a href="javascript:;">商務合作</a>
-          <a href="javascript:;">搜尋與推薦</a>
-          <a href="javascript:;">友站連結</a>
+          <a href="javascript:;">售後服務</a>
+          <a href="javascript:;">大宗採購方案</a>
+          <a href="javascript:;">異業合作</a>
+          <a href="javascript:;">招商專區</a>
+          <a href="javascript:;">人才招募</a>
         </p>
         <p>CopyRight &copy; 小猴子商城</p>
       </div>
@@ -158,12 +157,13 @@ const doLogin = () => {
   }
 
   .entry {
-    width: 120px;
-    margin-bottom: 38px;
+    width: 150px;
+    margin-bottom: 12px;
     font-size: 16px;
 
     i {
-      font-size: 14px;
+      vertical-align: middle;
+      font-size: 30px;
       color: $xtxColor;
       letter-spacing: -5px;
     }

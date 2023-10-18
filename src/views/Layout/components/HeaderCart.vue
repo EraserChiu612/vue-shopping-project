@@ -6,7 +6,7 @@ const cartStore = useCartStore()
 <template>
   <div class="cart">
     <a class="curr" href="#">
-      <i class="iconfont icon-cart"></i><em>{{ cartStore.cartList.length }}</em>
+      <i class="bx bxs-cart-alt"></i><em>{{ cartStore.cartList.length }}</em>
     </a>
     <div class="layer">
       <div class="list">
@@ -24,7 +24,7 @@ const cartStore = useCartStore()
               <p class="count">x{{ i.count }}</p>
             </div>
           </RouterLink>
-          <i class="iconfont icon-close-new" @click="cartStore.delCart(i.skuId)">x</i>
+          <i class="bx bx-x" @click="cartStore.delCart(i.skuId)"></i>
         </div>
       </div>
       <div class="foot">
@@ -51,8 +51,8 @@ const cartStore = useCartStore()
     position: relative;
     display: block;
 
-    .icon-cart {
-      font-size: 22px;
+    .bxs-cart-alt {
+      font-size: 35px;
     }
 
     em {
@@ -159,6 +159,7 @@ const cartStore = useCartStore()
       position: relative;
 
       i {
+        font-size: 22px;
         position: absolute;
         bottom: 38px;
         right: 0;
