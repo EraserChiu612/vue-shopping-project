@@ -66,7 +66,7 @@ const allCheck = (selected) => {
                 <p>
                   <el-popconfirm
                     title="確認刪除吗?"
-                    confirm-button-text="去認"
+                    confirm-button-text="確認"
                     cancel-button-text="取消"
                     @confirm="delCart(i)"
                   >
